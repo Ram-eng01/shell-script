@@ -3,11 +3,11 @@
 
 echo "please enter username:: "
 
-read USERNAME  #here USERNAME is variable
+read -s USERNAME  #here USERNAME is variable
 
 echo "Pease enter Password:: "
 
-read PASSWORD
+read  -s PASSWORD
 
 
 echo "username is: $USERNAME, password is: $PASSWORD"
