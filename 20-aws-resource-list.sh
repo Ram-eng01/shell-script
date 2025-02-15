@@ -65,7 +65,7 @@ case $2 in
         aws ec2 describe-volumes --region $1
         ;;
     ELB)
-        aws elb describe-load-balncers --region $1
+        aws elb describe-load-balancers --region $1
         ;;
     Route53)
         aws route53 list-hosted-zones --region $1
