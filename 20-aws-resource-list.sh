@@ -41,11 +41,11 @@ fi
 
 # check if the AWS CLI is configured
 
-if [ ! -d ~./aws ]
-then  
-    echo "aws is not configured, Please configure"
-    exit 1
-fi
+#if [ ! -d ~./aws ]
+#then  
+#    echo "aws is not configured, Please configure"
+#    exit 1
+#fi
 # List of resources based on the service
 
 case $2 in 
