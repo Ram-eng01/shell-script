@@ -25,7 +25,7 @@
 
 # check if the required num of arguments are passed
 
-if [ $# -ne 2]
+if [ $# -ne 2 ]
 then
     echo "Usage: $0 <region> <service_name>"
     exit 1
