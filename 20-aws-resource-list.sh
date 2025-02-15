@@ -33,7 +33,7 @@ fi
 
 # check if the aws cli is installed
 
-if ! command -v aws &> /dev/null
+if ! command aws --version &> /dev/null
 then
     echo "AWS CLI is not installed, Please instal it and try again."
     exit 1
