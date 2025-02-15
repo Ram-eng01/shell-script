@@ -3,7 +3,7 @@
 ####################################
 # Author: Rammohan
 
-# Script to automate the process of listing all the reaources in an aws account
+# Script to automate the process of listing all the resources in an aws account
 
 # Below are the some of the services are supported by this script
 
