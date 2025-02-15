@@ -25,7 +25,7 @@
 
 # check if the required num of arguments are passed
 
-if [$# -ne 2]
+if [ $# -ne 2]
 then
     echo "Usage: $0 <region> <service_name>"
     exit 1
@@ -33,7 +33,7 @@ fi
 
 # check if the aws cli is installed
 
-if [! command -v aws &> /dev/null]
+if ! command -v aws &> /dev/null
 then
     echo "AWS CLI is not installed, Please instal it and try again."
     exit 1
@@ -81,6 +81,7 @@ case $2 in
         exit 1
         ;;
     esac
+
 
 
 
