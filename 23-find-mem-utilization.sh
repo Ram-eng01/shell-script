@@ -3,7 +3,7 @@
 
 #curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' YOUR_WEBHOOK_URL
 
-SLACK_WEB='https://hooks.slack.com/services/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'
+SLACK_WEB="https://hooks.slack.com/services/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"
 TOTAL_MEM=$(free -m | grep -i "mem" | awk -F " " '{print $2}')
 TOTAL_AVAIL=$(free -m | grep -i "mem" | awk -F " " '{print $7}')
 
