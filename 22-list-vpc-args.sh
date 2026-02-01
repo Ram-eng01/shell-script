@@ -6,6 +6,6 @@
 
 REGIONS=$@
 for REGION in $REGIONS; do
-    cowsay "-----------${REGION}---------------"
+    echo "-----------${REGION}---------------"
     aws ec2 describe-vpcs --region "$REGION" | jq -r '.Vpcs[].VpcId'
 done
