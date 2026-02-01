@@ -14,7 +14,7 @@ CURRENT_UTL_PER=$(expr 100 - $X)
 
 if [ $X -le 10 ];
 then  
-   echo "Mmeory is utilizec more than 90%"
+   echo "Memory is utilization more than 90%"
 else
    echo "Current memory utilization is ${CURRENT_UTL_PER}% and within the limits."
 fi
