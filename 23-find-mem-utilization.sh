@@ -7,7 +7,7 @@ USED_MEMORY=$(expr $TOTAL_MEM - $TOTAL_AVAIL)
 echo "The total memory In the machine is ${TOTAL_MEM}MB and current Utilization is ${USED_MEMORY}MB"
 
 FREE_PERCENT=$(awk -v avail="$TOTAL_AVAIL" -v total="$TOTAL_MEM" \
-    'BEGIN { printf "%.2f", (avail/total)*100 }')
+    'BEGIN { (avail/total)*100 }')
 
 echo "The free memory percentage is ${FREE_PERCENT}%"
 CURRENT_UTL_PER=$(expr 100 - $FREE_PERCENT)
