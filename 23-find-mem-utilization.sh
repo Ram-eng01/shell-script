@@ -10,7 +10,7 @@ FREE_PERCENT=$(awk -v avail="$TOTAL_AVAIL" -v total="$TOTAL_MEM" \
     'BEGIN { printf "%.2f", (avail/total)*100 }')
 
 echo "The free memory percentage is ${FREE_PERCENT}%"
-CURRENT_UTL_PER=${expr 100 - $FREE_PERCENT}
+CURRENT_UTL_PER=$(expr 100 - $FREE_PERCENT)
 
 if [ $FREE_PERCENT -le 10 ];
 then  
