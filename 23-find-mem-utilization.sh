@@ -1,5 +1,9 @@
 #!/bin/bash
+#https://hooks.slack.com/services/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
 
+#curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' YOUR_WEBHOOK_URL
+
+SLACK_WEB='https://hooks.slack.com/services/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'
 TOTAL_MEM=$(free -m | grep -i "mem" | awk -F " " '{print $2}')
 TOTAL_AVAIL=$(free -m | grep -i "mem" | awk -F " " '{print $7}')
 
@@ -15,6 +19,8 @@ CURRENT_UTL_PER=$(expr 100 - $X)
 if [ $X -le 10 ];
 then  
    echo "Memory is utilization more than 90%"
+   curl -X POST ${SLACK_WEB} -sL -H 'Content-type: application/json' --data '{"text":\"Current Memory Utilization is: ${CURRENT_UTL_PER}\"}' >>/dev/null
+
 else
    echo "Current memory utilization is ${CURRENT_UTL_PER}% and within the limits."
 fi
