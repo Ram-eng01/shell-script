@@ -19,7 +19,7 @@ CURRENT_UTL_PER=$(expr 100 - $X)
 if [ $X -le 10 ];
 then  
    echo "Memory is utilization more than 90%"
-   curl -X POST ${SLACK_WEB} -sL -H 'Content-type: application/json' --data "{"text":\"Current Memory Utilization is: ${CURRENT_UTL_PER}\"}" >>/dev/null
+   curl -X POST  -sL -H 'Content-type: application/json' --data "{"text":\"Current Memory Utilization is: ${CURRENT_UTL_PER}\"}" ${SLACK_WEB} >>/dev/null
 
 else
    echo "Current memory utilization is ${CURRENT_UTL_PER}% and within the limits."
