@@ -4,8 +4,8 @@
 
 
 
-
-for REGION in "$@"; do
+REGIONS=$@
+for REGION in $REGIONS; do
     aws ec2 describe-vpcs --region "$REGION" \
         | jq -r '.Vpcs[].VpcId'
 done
