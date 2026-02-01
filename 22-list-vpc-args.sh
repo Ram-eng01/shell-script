@@ -5,5 +5,5 @@
 
 
 
-REGION=$@
-aws ec2 describe-vpcs --region $REGION | jq ".Vpcs[].VpcId"
+REGIONS=$@
+aws ec2 describe-vpcs --region $REGIONS | jq ".Vpcs[].VpcId"
