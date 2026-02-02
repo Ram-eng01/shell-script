@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 if [ $# -gt 0 ];
 then
     for REGION in $*;do
