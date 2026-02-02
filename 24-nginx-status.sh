@@ -7,3 +7,6 @@ else
     systemctl start nginx >/dev/null
     systemctl status nginx --no-pager >/dev/null
 fi
+
+
+# In shell script /dev/null is a special file all data written to it is ignored or discarded.
