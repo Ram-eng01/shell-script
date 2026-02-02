@@ -14,4 +14,5 @@ else
     echo "lets create user ${USER_NAME}"
 fi
 else
-echo "You have given $# arguments. Please provide atleast one argument."
+    echo "You have given $# arguments. Please provide atleast one argument."
+fi
