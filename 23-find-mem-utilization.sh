@@ -1,24 +1,21 @@
 #!/bin/bash
 
-#curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' YOUR_WEBHOOK_URL
-echo "Slack webhook is: $SLACK_WEB"
-TOTAL_MEM=$(free -m | grep -i "mem" | awk -F " " '{print $2}')
-TOTAL_AVAIL=$(free -m | grep -i "mem" | awk -F " " '{print $7}')
-
-USED_MEMORY=$(expr $TOTAL_MEM - $TOTAL_AVAIL)
-echo "The total memory In the machine is ${TOTAL_MEM}MB and current Utilization is ${USED_MEMORY}MB"
-
-X=$(echo "scale=2; $TOTAL_AVAIL / $TOTAL_MEM "| bc | tr -d ".")
-
-
-echo "The free memory percentage is ${X}%"
-CURRENT_UTL_PER=$(expr 100 - $X)
-
-if [ $X -le 10 ];
-then  
-   echo "Memory is utilization more than 90%"
-   curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, test World!"}' ${SLACK_WEB}
-
+echo "slack webhook ${SLACK_WEB}"
+TOTAL_MEM=$(free -m | grep -i mem | awk -F " " '{print $2}')
+TOTAL_AVL=$(free -m | grep -i mem | awk -F " " '{print $7}')
+USED_MEMORY=$(expr $TOTAL_MEM - $TOTAL_AVL)
+echo "The Total Memory In The Machine Is ${TOTAL_MEM}MB and CURRENT UTILIZATION IS ${USED_MEMORY}MB"
+X=$(echo "scale=2; $TOTAL_AVL / $TOTAL_MEM" | bc | tr -d '.')
+echo "The Free Memory Percentrage is ${X}%."
+CURRENT_UTIL_PER=$(expr 100 - $X)
+if [ $X -lt 10 ]; then
+    #if (($X <= 40)); then
+    echo "Current Memory Utilization of Server ${SERVER_NAME} is ${CURRENT_UTIL_PER}% "
+    curl -X POST ${SLACK_WEB} -sL -H 'Content-type: application/json' --data "{"text": \"Current Memory Utilization of Server ${SERVER_NAME} is: ${CURRENT_UTIL_PER}\"}" >>/dev/null
 else
-   echo "Current memory utilization is ${CURRENT_UTL_PER}% and within the limits."
+    echo "Current Memory Utilization is ${CURRENT_UTIL_PER}% and within the limits."
 fi
+
+#Using Binary Calculator instead of expr
+#echo "scale=2; $TOTAL_AVL / $TOTAL_MEM" | bc
+#echo "scale=2; $TOTAL_AVL / $TOTAL_MEM" | bc | tr -d '.'
