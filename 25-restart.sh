@@ -2,7 +2,7 @@
 
 if [ $# -gt 0 ];
 then
-    for REGION in $*
+    for REGION in $*;do
         echo "[#-------${REGION}-------#]"
         aws ec2 describe-vpcs --region $REGION | jq ".Vpcs[].VpcId"
     done
