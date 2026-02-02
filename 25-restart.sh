@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -x # for debug 
 
 if [ $# -gt 0 ];
 then
