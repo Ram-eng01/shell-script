@@ -1,9 +1,7 @@
 #!/bin/bash
-#https://hooks.slack.com/services/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
 
 #curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' YOUR_WEBHOOK_URL
-
-#SLACK_WEB="https://hooks.slack.com/services/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"
+echo "Slack webhook is: $SLACK_WEB"
 TOTAL_MEM=$(free -m | grep -i "mem" | awk -F " " '{print $2}')
 TOTAL_AVAIL=$(free -m | grep -i "mem" | awk -F " " '{print $7}')
 
