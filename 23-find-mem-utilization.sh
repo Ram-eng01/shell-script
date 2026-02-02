@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo "slack webhook ${SLACK_WEB}"
+SERVER_NAME=$(curl -sL http://169.254.169.254/latest/meta-data/local-hostname)
 TOTAL_MEM=$(free -m | grep -i mem | awk -F " " '{print $2}')
 TOTAL_AVL=$(free -m | grep -i mem | awk -F " " '{print $7}')
 USED_MEMORY=$(expr $TOTAL_MEM - $TOTAL_AVL)
@@ -11,7 +12,10 @@ CURRENT_UTIL_PER=$(expr 100 - $X)
 if [ $X -lt 10 ]; then
     #if (($X <= 40)); then
     echo "Current Memory Utilization of Server ${SERVER_NAME} is ${CURRENT_UTIL_PER}% "
-    curl -X POST ${SLACK_WEB} -sL -H 'Content-type: application/json' --data "{"text": \"Current Memory Utilization of Server ${SERVER_NAME} is: ${CURRENT_UTIL_PER}\"}" >>/dev/null
+    curl -X POST "$SLACK_WEB" \
+     -H "Content-type: application/json" \
+     --data "{\"text\": \"Current Memory Utilization of Server ${SERVER_NAME} is: ${CURRENT_UTIL_PER}%\"}"
+
 else
     echo "Current Memory Utilization is ${CURRENT_UTIL_PER}% and within the limits."
 fi
