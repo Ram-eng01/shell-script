@@ -5,9 +5,13 @@
 #make sure user has sudo persmission.
 
 USER_NAME=$1
+if [ $# -gt 0 ]
+then
 EXISTING_USER=$(cat /etc/passwd | grep -i -w ${USER_NAME} | cut -d ":" -f 1)
 if [ "${USER_NAME}" = "${EXISTING_USER}" ]; then
     echo "The user ${USER_NAME} already exists. Try a different username."
 else
     echo "lets create user ${USER_NAME}"
 fi
+else
+echo "You have given $# arguments. Please provide atleast one argument."
