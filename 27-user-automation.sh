@@ -4,6 +4,10 @@
 #Expire the password forcing the user to reset it
 #make sure user has sudo persmission.
 #echo '!@#$%^&*()_' | fold -w 1 | shuf | head -1
+#echo "/etc/shh/sshd_config" | tr -d '/'
+#echo "welcome-to-devops" | tr [:lower:] [:upper:]
+#echo "welcome-to-devops" | tr 'e' 'x'
+#
 USER_NAME=$1
 if [ $# -gt 0 ]
 then
