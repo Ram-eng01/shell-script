@@ -2,7 +2,10 @@
 
 if [ $# -gt 0 ];
 then
-    aws ec2 describe-vpcs --region $@ | jq ".Vpcs[].VpcId"
+    for REGION in $*
+        echo "[#-------${REGION}-------#]"
+        aws ec2 describe-vpcs --region $REGION | jq ".Vpcs[].VpcId"
+    done
 else
     echo "You have given $# parameters to this script, Please provide parameter at least 1 eg; us-east-1"
 fi
